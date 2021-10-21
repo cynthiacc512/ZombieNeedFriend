@@ -1,48 +1,39 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerCollision : MonoBehaviour
 {
-	public Rigidbody rb;
-	public Animator animator;
+    public static bool isGround;
+    public PlayerMovement movement;
+    public Animator animator;
+    public static bool isRage;
 
-	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
-    public float speed = 10;
-    private float leftRightSpeed = 4;
-    private float jumpForce = 2f;
-	
-    void FixedUpdate()
+    void OnCollisionEnter(Collision collision)
     {
-		//run
-		transform.Translate(Vector3.forward * Time.deltaTime * speed , Space.World);
-		
-		//left
-		if ( Input.GetKey(KeyCode.A))
-		{
-			if(this.gameObject.transform.position.x > LevelBoundary.leftSide)
-			{
-				transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+		if(!isRage) {
+			if (collision.collider.tag == "Obstacle") {
+				Destroy(collision.collider.gameObject);
+				movement.enabled = false;
+				animator.SetTrigger("Hurt");
+				for ( int x = 0; x <= 2 ; x++){
+					transform.position -= new Vector3 (0, 0, 30 * Time.deltaTime);
+				}
+				Invoke("startMove", 3);
+				isGround = true;
+			} else if (collision.collider.tag == "Ground"){
+				isGround = true;
+			} else if (collision.collider.tag == "Rage"){
+				isRage = true;
+			}
+		} else {
+			if (collision.collider.tag != "Ground") {
+				Destroy(collision.collider.gameObject);
 			}
 		}
-		
-		//right
-		if ( Input.GetKey(KeyCode.D))
-		{
-			if(this.gameObject.transform.position.x < LevelBoundary.rightSide)
-			{
-				transform.Translate(Vector3.left * Time.deltaTime * -leftRightSpeed);
-			}
-		}
-		
-		Debug.Log(PlayerCollision.isGround);
-		//jump
-		if(Input.GetKey(KeyCode.W) && PlayerCollision.isGround){
-			rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-			PlayerCollision.isGround = false;
-		}
-		
-		if (Input.GetKey(KeyCode.S))
-		{
-			animator.SetTrigger("Slide");
-		}
+        
+    }
+
+    void startMove() 
+    {
+		movement.enabled = true;
     }
 }
