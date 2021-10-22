@@ -3,17 +3,15 @@
 public class PlayerCollision : MonoBehaviour
 {
     public static bool isGround;
+	public static bool isRage;
+	public static bool isConfuse;
     public PlayerMovement movement;
     public Animator animator;
-
-	public static bool isRage;
 
     void OnCollisionEnter(Collision collision)
     {
 		if(!isRage) {
-
-			if (collision.collider.tag == "Obstacle")
-			{
+			if (collision.collider.tag == "Obstacle") {
 				Destroy(collision.collider.gameObject);
 				movement.enabled = false;
 				animator.SetTrigger("Hurt");
@@ -22,22 +20,16 @@ public class PlayerCollision : MonoBehaviour
 				}
 				Invoke("startMove", 3);
 				isGround = true;
-			}
-
-			if (collision.collider.tag == "Ground")
-			{
+			} else if (collision.collider.tag == "Ground"){
 				isGround = true;
-			}
-
-			if (collision.collider.tag == "Rage")
-			{
+			} else if (collision.collider.tag == "Rage"){
 				isRage = true;
+			} else if (collision.collider.tag == "confuse"){
+				isConfuse = true;
+				Destroy(collision.collider.gameObject);
 			}
-
 		} else {
-
-			if (collision.collider.tag != "Ground")
-			{
+			if (collision.collider.tag != "Ground") {
 				Destroy(collision.collider.gameObject);
 			}
 		}

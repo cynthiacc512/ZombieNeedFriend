@@ -6,34 +6,63 @@ public class PlayerCollision : MonoBehaviour
     public PlayerMovement movement;
     public Animator animator;
     public static bool isRage;
+    public static bool isConfuse;
 
     void OnCollisionEnter(Collision collision)
     {
-		if(!isRage) {
-			if (collision.collider.tag == "Obstacle") {
-				Destroy(collision.collider.gameObject);
-				movement.enabled = false;
-				animator.SetTrigger("Hurt");
-				for ( int x = 0; x <= 2 ; x++){
-					transform.position -= new Vector3 (0, 0, 30 * Time.deltaTime);
+		//run
+		transform.Translate(Vector3.forward * Time.deltaTime * speed , Space.World);
+		
+		//jump
+		if(Input.GetKey(KeyCode.W) && PlayerCollision.isGround){
+			rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+			PlayerCollision.isGround = false;
+		}
+		
+		if (Input.GetKey(KeyCode.S))
+		{
+			animator.SetTrigger("Slide");
+		}
+		
+		Debug.Log(PlayerCollision.isConfuse);
+		//garbage
+		if(PlayerCollision.isConfuse){
+			//right
+			if ( Input.GetKey(KeyCode.D)){
+				if(this.gameObject.transform.position.x > LevelBoundary.leftSide)
+				{
+					transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
 				}
-				Invoke("startMove", 3);
-				isGround = true;
-			} else if (collision.collider.tag == "Ground"){
-				isGround = true;
-			} else if (collision.collider.tag == "Rage"){
-				isRage = true;
+			}
+			
+			//left
+			if ( Input.GetKey(KeyCode.A)){
+				if(this.gameObject.transform.position.x < LevelBoundary.rightSide)
+				{
+					transform.Translate(Vector3.left * Time.deltaTime * -leftRightSpeed);
+				}
+			}
+		}else{
+			//normal
+		//left
+		if ( Input.GetKey(KeyCode.A))
+		{
+			if(this.gameObject.transform.position.x > LevelBoundary.leftSide)
+			{
+				transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
 			}
 		} else {
 			if (collision.collider.tag != "Ground") {
 				Destroy(collision.collider.gameObject);
 			}
 		}
-        
-    }
+		}
 
-    void startMove() 
-    {
-		movement.enabled = true;
+		
+		
+
+
+
+		
     }
 }
