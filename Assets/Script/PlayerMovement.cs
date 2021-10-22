@@ -1,17 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerCollision : MonoBehaviour
 {
-	public Rigidbody rb;
-	public Animator animator;
+    public static bool isGround;
+    public PlayerMovement movement;
+    public Animator animator;
+    public static bool isRage;
 
-	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
-    public float speed = 10;
-    private float leftRightSpeed = 4;
-    private float jumpForce = 2f;
-	
-    void FixedUpdate()
+    void OnCollisionEnter(Collision collision)
     {
+<<<<<<< HEAD
 		//run
 		transform.Translate(Vector3.forward * Time.deltaTime * speed , Space.World);
 		
@@ -52,17 +50,29 @@ public class PlayerMovement : MonoBehaviour
 			if(this.gameObject.transform.position.x > LevelBoundary.leftSide)
 			{
 				transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+=======
+		if(!isRage) {
+			if (collision.collider.tag == "Obstacle") {
+				Destroy(collision.collider.gameObject);
+				movement.enabled = false;
+				animator.SetTrigger("Hurt");
+				for ( int x = 0; x <= 2 ; x++){
+					transform.position -= new Vector3 (0, 0, 30 * Time.deltaTime);
+				}
+				Invoke("startMove", 3);
+				isGround = true;
+			} else if (collision.collider.tag == "Ground"){
+				isGround = true;
+			} else if (collision.collider.tag == "Rage"){
+				isRage = true;
+>>>>>>> bda7b2c420aafe99bd3a30b603b8249529b02d28
+			}
+		} else {
+			if (collision.collider.tag != "Ground") {
+				Destroy(collision.collider.gameObject);
 			}
 		}
-		
-		//right
-		if ( Input.GetKey(KeyCode.D))
-		{
-			if(this.gameObject.transform.position.x < LevelBoundary.rightSide)
-			{
-				transform.Translate(Vector3.left * Time.deltaTime * -leftRightSpeed);
-			}
-		}
+<<<<<<< HEAD
 		}
 
 		
@@ -71,5 +81,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 		
+=======
+        
+    }
+
+    void startMove() 
+    {
+		movement.enabled = true;
+>>>>>>> bda7b2c420aafe99bd3a30b603b8249529b02d28
     }
 }
