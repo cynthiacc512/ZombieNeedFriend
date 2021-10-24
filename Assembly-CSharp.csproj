@@ -51,6 +51,7 @@
      <Compile Include="Assets\Script\LevelBoundary.cs" />
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\Script\CameraFollow.cs" />
+     <Compile Include="Assets\Script\RageTime.cs" />
      <Compile Include="Assets\Script\RageMovement.cs" />
      <Compile Include="Assets\Script\BrainCollide.cs" />
      <Compile Include="Assets\Script\RotateItems.cs" />

@@ -12,6 +12,7 @@ TagManager:
   - Random
   - Health
   - Rage
+  - People
   layers:
   - Default
   - TransparentFX
