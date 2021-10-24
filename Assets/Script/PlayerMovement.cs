@@ -6,15 +6,9 @@ public class PlayerMovement : MonoBehaviour
 	public Animator animator;
 
 	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
-<<<<<<< HEAD
     public float speed = 10;
     private float leftRightSpeed = 4;
     private float jumpForce = 2f;
-=======
-	public float speed = 10;
-	private float leftRightSpeed = 4;
-	private float jumpForce = 2f;
->>>>>>> 9303ad6f91870fb153ab2665d3d2d73793fac7b7
 	
     void FixedUpdate()
     {
