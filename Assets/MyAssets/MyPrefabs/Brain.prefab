@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 571235422486042567}
   - component: {fileID: 513282459963229567}
+  - component: {fileID: 2682570751582487128}
   - component: {fileID: 5615228170958421658}
   - component: {fileID: -8122052825964281538}
   - component: {fileID: 5450266916908462866}
@@ -49,6 +50,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2682570751582487128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574600420429488135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81062b27d2e385443b49031e2b99384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theZombie: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562,
+    type: 3}
+  zombieRage: {fileID: 3924821714496370047, guid: 578c1471ac0667c4790b0e4a73929a55,
+    type: 3}
 --- !u!114 &5615228170958421658
 MonoBehaviour:
   m_ObjectHideFlags: 0

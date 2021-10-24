@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public static bool isGround;
-    public PlayerMovement movement;
-    public Animator animator;
-    public static bool isRage;
-    public static bool isConfuse;
+	public Rigidbody rb;
+	public Animator animator;
 
-    void OnCollisionEnter(Collision collision)
+	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
+    public float speed = 10;
+    private float leftRightSpeed = 4;
+    private float jumpForce = 2f;
+	
+    void FixedUpdate()
     {
 		//run
 		transform.Translate(Vector3.forward * Time.deltaTime * speed , Space.World);
@@ -24,7 +26,6 @@ public class PlayerCollision : MonoBehaviour
 			animator.SetTrigger("Slide");
 		}
 		
-		Debug.Log(PlayerCollision.isConfuse);
 		//garbage
 		if(PlayerCollision.isConfuse){
 			//right
@@ -51,9 +52,14 @@ public class PlayerCollision : MonoBehaviour
 			{
 				transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
 			}
-		} else {
-			if (collision.collider.tag != "Ground") {
-				Destroy(collision.collider.gameObject);
+		}
+		
+		//right
+		if ( Input.GetKey(KeyCode.D))
+		{
+			if(this.gameObject.transform.position.x < LevelBoundary.rightSide)
+			{
+				transform.Translate(Vector3.left * Time.deltaTime * -leftRightSpeed);
 			}
 		}
 		}

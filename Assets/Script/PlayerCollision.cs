@@ -5,6 +5,8 @@ public class PlayerCollision : MonoBehaviour
     public static bool isGround;
 	public static bool isRage;
 	public static bool isConfuse;
+	public static bool isPeople = false;
+	public static int score = 0;
     public PlayerMovement movement;
     public Animator animator;
 
@@ -27,10 +29,21 @@ public class PlayerCollision : MonoBehaviour
 			} else if (collision.collider.tag == "confuse"){
 				isConfuse = true;
 				Destroy(collision.collider.gameObject);
+			} else if (collision.collider.tag == "People"){
+				isPeople = true;
+				Destroy(collision.collider.gameObject);
+				score += 1;
+				//scorenya ngebug
+				Debug.Log(score);
 			}
 		} else {
 			if (collision.collider.tag != "Ground") {
 				Destroy(collision.collider.gameObject);
+			}else if (collision.collider.tag == "People"){
+				isPeople = true;
+				Destroy(collision.collider.gameObject);
+				score += 1;
+				Debug.Log(score);
 			}
 		}
         
