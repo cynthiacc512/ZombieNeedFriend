@@ -19,7 +19,6 @@ public class RageTimer : MonoBehaviour
             if (timeRemaining < 0)
             {
                 theZombie.SetActive(true);
-                //theZombie.transform.position = zombieRage.transform.position;
                 theZombie.transform.position = new Vector3(zombieRage.transform.position.x, zombieRage.transform.position.y +  2, zombieRage.transform.position.z);
                 zombieRage.SetActive(false);
 

@@ -36,17 +36,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\RageTimer.cs" />
      <Compile Include="Assets\Script\PlayerCollision.cs" />
      <Compile Include="Assets\Script\LevelBoundary.cs" />
      <Compile Include="Assets\Script\PlayerMovement.cs" />
+     <Compile Include="Assets\Script\CountDownTime.cs" />
      <Compile Include="Assets\Script\CameraFollow.cs" />
+     <Compile Include="Assets\Script\MainMenu.cs" />
      <Compile Include="Assets\Script\RageMovement.cs" />
      <Compile Include="Assets\Script\BrainCollide.cs" />
      <Compile Include="Assets\Script\RotateItems.cs" />
      <Compile Include="Assets\Script\GenerateLevel.cs" />
-     <Compile Include="Assets\Script\RageTimer.cs" />
-     <Compile Include="Assets\Script\MainMenu.cs" />
-     <Compile Include="Assets\Script\CountDownTime.cs" />
+     <Compile Include="Assets\Script\CarObstacle.cs" />
+     <Compile Include="Assets\Script\SpawnZombie.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

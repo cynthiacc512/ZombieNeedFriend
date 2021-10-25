@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
     public float speed = 12;
     private float leftRightSpeed = 4;
-    private float jumpForce = 2f;
+    private float jumpForce = 2.1f;
 	private BoxCollider collider;
 	
 	private void Start(){
