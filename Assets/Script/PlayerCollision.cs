@@ -32,10 +32,16 @@ public class PlayerCollision : MonoBehaviour
 			} else if (collision.collider.tag == "People"){
 				isPeople = true;
 				Destroy(collision.collider.gameObject);
-				score += 1;
-				//scorenya ngebug
-				Debug.Log(score);
+				
+				// score += 1;
+
+				// //scorenya ngebug
+				// Debug.Log(score);
 			}
+
+			// animator.SetBool("Eat", false);
+			// Debug.Log(false);
+
 		} else {
 			if (collision.collider.tag != "Ground") {
 				Destroy(collision.collider.gameObject);
