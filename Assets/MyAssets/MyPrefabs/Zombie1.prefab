@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 4482536389725064990}
   - component: {fileID: 886086572540963947}
   - component: {fileID: 5636198787165535596}
-  - component: {fileID: 1706542093447916589}
+  - component: {fileID: 572459599422970212}
   - component: {fileID: 4190745290651711545}
   - component: {fileID: 6393394625332634784}
   - component: {fileID: 6393394625332634786}
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7414175138147553399}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e76ae045abef15e48af08b1ea3b18758, type: 3}
   m_Name: 
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   rb: {fileID: 4190745290651711545}
   animator: {fileID: 4482536389725064990}
   speed: 12
---- !u!114 &1706542093447916589
+--- !u!114 &572459599422970212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2436,8 +2436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520ecfc0a99894a4fb3e530da217f345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5636198787165535596}
-  animator: {fileID: 4482536389725064990}
+  movement: {fileID: 0}
+  animator: {fileID: 0}
+  zombieFriend: {fileID: 0}
+  PlaceX: 0
+  PlaceZ: 0
+  zombie: 1
 --- !u!54 &4190745290651711545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2481,6 +2485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   animator: {fileID: 4482536389725064990}
+  zombieFriend: {fileID: 0}
+  PlaceX: 0
+  PlaceZ: 0
+  zombie: 1
 --- !u!1 &7745752440828440587
 GameObject:
   m_ObjectHideFlags: 0

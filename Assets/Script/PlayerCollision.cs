@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -14,6 +17,10 @@ public class PlayerCollision : MonoBehaviour
 	private GameObject theZombie;
 	public float PlaceX;
 	public float PlaceZ;
+
+	public float zombie = 1;
+
+	public Text text;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -38,19 +45,17 @@ public class PlayerCollision : MonoBehaviour
 				isPeople = true;
 				Destroy(collision.collider.gameObject);
 			}
-
-
 		} else {
 			if (collision.collider.tag != "Ground") {
 				Destroy(collision.collider.gameObject);
 			}else if (collision.collider.tag == "People"){
 				isPeople = true;
 				Destroy(collision.collider.gameObject);
-				// score += 1;
-				// Debug.Log(score);
+				score += 1;
+				Debug.Log(score);
 			}
 		}
-        
+
 		if(isPeople){
 			//nambah orang dibelakang
 			SpawnZombieFriends();
@@ -65,16 +70,27 @@ public class PlayerCollision : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter(Collider other){
+		Debug.Log("HORE MENANG!!");
+		Debug.Log("Score: "+score);
+		// text.text = "HOREE MENANG!!";
+		// text.text = "Score: "+ score;
+		movement.enabled = false;
+	}
+
     void startMove()
 	{
 		movement.enabled = true;
 	}
 
 	void SpawnZombieFriends(){
-		theZombie = GameObject.FindWithTag("Player");
+		// theZombie = GameObject.FindWithTag("Player");
+		// zombie = GameObject.FindGameObjectsWithTag("Player").Length;
+		// Debug.Log("zombie:"+ zombie);
 
-		PlaceX = Random.Range(theZombie.transform.position.x - 0.1f, theZombie.transform.position.x + 0.5f);
-		PlaceZ = Random.Range (theZombie.transform.position.z - 0.2f, theZombie.transform.position.z - 0.5f);
-		Instantiate(theZombie, new Vector3(PlaceX, 0.5f, PlaceZ), Quaternion.Euler(0f, 0f, 0f));
+		// PlaceX = Random.Range(theZombie.transform.position.x - 0.1f, theZombie.transform.position.x + 0.5f);
+		// PlaceZ = Random.Range (theZombie.transform.position.z - 0.2f, theZombie.transform.position.z - 0.5f);
+		// Instantiate(theZombie, new Vector3(PlaceX, 0.5f, PlaceZ), Quaternion.Euler(0f, 0f, 0f));
 	}
 }
+

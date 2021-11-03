@@ -88,4 +88,6 @@ public class PlayerMovement : MonoBehaviour
 		collider.center = new Vector3(collider.center.x, collider.center.y * 2, collider.center.z);
 	}
 
+
+
 }
