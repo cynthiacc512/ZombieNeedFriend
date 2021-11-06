@@ -2339,7 +2339,6 @@ GameObject:
   - component: {fileID: 572459599422970212}
   - component: {fileID: 4190745290651711545}
   - component: {fileID: 6393394625332634784}
-  - component: {fileID: 6393394625332634786}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Player
@@ -2438,10 +2437,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   animator: {fileID: 0}
+  theZombie: {fileID: 0}
   zombieFriend: {fileID: 0}
   PlaceX: 0
   PlaceZ: 0
-  zombie: 1
+  rageBar: {fileID: 0}
 --- !u!54 &4190745290651711545
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2471,24 +2471,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.68961334, y: 1.7980709, z: 1}
   m_Center: {x: -0.0013775826, y: 0.9044694, z: 0}
---- !u!114 &6393394625332634786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414175138147553399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520ecfc0a99894a4fb3e530da217f345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  animator: {fileID: 4482536389725064990}
-  zombieFriend: {fileID: 0}
-  PlaceX: 0
-  PlaceZ: 0
-  zombie: 1
 --- !u!1 &7745752440828440587
 GameObject:
   m_ObjectHideFlags: 0
