@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 2.1f;
 	private BoxCollider collider;
 	
+	public AudioSource boink;
+	public AudioSource slide;
+
 	private void Start(){
 		collider = GetComponent<BoxCollider>();
 	}
@@ -27,12 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
 		//jump
 		if(Input.GetKey(KeyCode.W) && PlayerCollision.isGround){
+			boink.Play();
 			rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 			PlayerCollision.isGround = false;
 		}
 		
 		if (Input.GetKey(KeyCode.S))
 		{
+			slide.Play();
 			startSliding();
 			Invoke("stopSliding", 0.5f);
 		}

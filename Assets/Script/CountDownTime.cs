@@ -10,6 +10,8 @@ public class CountDownTime : MonoBehaviour
     public Text countdownDisplay;
     public PlayerMovement movement;
 
+    public AudioSource fight;
+
     private void Start()
     {
         StartCoroutine(CountdownStart());
@@ -25,7 +27,7 @@ public class CountDownTime : MonoBehaviour
 
             countTime--;
         }
-
+        fight.Play();
         countdownDisplay.text = "GET PREN!";
 
         yield return new WaitForSeconds(1f);

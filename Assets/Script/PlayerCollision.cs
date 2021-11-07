@@ -22,13 +22,18 @@ public class PlayerCollision : MonoBehaviour
 	public GameObject rageBar;
 	public static int life = 3;
 
+	public AudioSource eat;
+	public AudioSource metalCollision;
+	public AudioSource sampah;
+	public AudioSource brain;
+
     void OnCollisionEnter(Collision collision)
     {
 		if(!isRage) {
 			
 			if (collision.collider.tag == "Obstacle") {
+				metalCollision.Play();
 				Destroy(collision.collider.gameObject);
-				// Destroy(this.gameObject);
 				movement.enabled = false;
 				animator.SetTrigger("Hurt");
 				for ( int x = 0; x <= 2 ; x++){
@@ -42,8 +47,10 @@ public class PlayerCollision : MonoBehaviour
 			} else if (collision.collider.tag == "Ground"){
 				isGround = true;
 			} else if (collision.collider.tag == "Rage"){
+				brain.Play();
 				isRage = true;
 			} else if (collision.collider.tag == "confuse"){
+				sampah.Play();
 				isConfuse = true;
 				score -= 3;
 				Destroy(collision.collider.gameObject);
@@ -51,6 +58,7 @@ public class PlayerCollision : MonoBehaviour
 				isPeople = true;
 				zombie += 1;
 				score += 10;
+				eat.Play ();
 				Destroy(collision.collider.gameObject);
 				SpawnZombieFriends();
 			}
@@ -119,6 +127,8 @@ public class PlayerCollision : MonoBehaviour
 		}
 		
 	}
+
+	
 
 }
 

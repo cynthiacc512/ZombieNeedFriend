@@ -7,6 +7,8 @@ public class CarObstacle : MonoBehaviour
     int MinDist = 25;
 	public bool isLeft ;
 	
+	public AudioSource car;
+	
     // Start is called before the first frame update
 	void Start()
     {
@@ -22,9 +24,11 @@ public class CarObstacle : MonoBehaviour
     {
         if(isLeft && Vector3.Distance(transform.position, GameObject.FindWithTag("Player").transform.position) <= MinDist && transform.position.x <= 4)
 		{
+			car.Play();
 			transform.position += new Vector3 (40 * Time.deltaTime, 0, 0);
 		} else if (!isLeft && Vector3.Distance(transform.position, GameObject.FindWithTag("Player").transform.position) <= MinDist && transform.position.x > 8)
 		{
+			car.Play();
 			transform.position += new Vector3 (-40 * Time.deltaTime, 0, 0);
 			
 		}

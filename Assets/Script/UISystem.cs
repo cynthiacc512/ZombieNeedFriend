@@ -8,6 +8,7 @@ public class UISystem : MonoBehaviour
 	public Text scoreText;
 	public Text lifeText;
 
+
 	void Update()
 	{
 		scoreText.text =  "Score :" + PlayerCollision.score.ToString("0");
