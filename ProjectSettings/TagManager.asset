@@ -13,6 +13,7 @@ TagManager:
   - Health
   - Rage
   - People
+  - FInishLine
   layers:
   - Default
   - TransparentFX

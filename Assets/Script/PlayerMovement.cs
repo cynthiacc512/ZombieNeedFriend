@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 jump = new Vector3(0.0f, 2.5f, 0.0f);
     public float speed = 12;
     private float leftRightSpeed = 4;
-    private float jumpForce = 2f;
+    private float jumpForce = 2.1f;
 	private BoxCollider collider;
 	
+	public AudioSource boink;
+	public AudioSource slide;
+
 	private void Start(){
 		collider = GetComponent<BoxCollider>();
 	}
@@ -27,12 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
 		//jump
 		if(Input.GetKey(KeyCode.W) && PlayerCollision.isGround){
+			boink.Play();
 			rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 			PlayerCollision.isGround = false;
 		}
 		
 		if (Input.GetKey(KeyCode.S))
 		{
+			slide.Play();
 			startSliding();
 			Invoke("stopSliding", 0.5f);
 		}
@@ -87,5 +92,7 @@ public class PlayerMovement : MonoBehaviour
 		collider.size = new Vector3(collider.size.x, collider.size.y * 2, collider.size.z);
 		collider.center = new Vector3(collider.center.x, collider.center.y * 2, collider.center.z);
 	}
+
+
 
 }
